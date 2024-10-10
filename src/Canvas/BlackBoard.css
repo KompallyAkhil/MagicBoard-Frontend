@@ -1,0 +1,149 @@
+body {
+    background-color: black; 
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+}
+.canvas-style {
+    width: 90%; 
+    max-width: 1150px; 
+    height: auto; 
+    aspect-ratio: 1150 / 600;
+    border: 1px solid white; 
+    display: block;
+    position: relative;
+}
+.canvas-style:hover {
+    cursor: pointer;
+}
+.heading {
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+    width: 100%; 
+}
+.erase-btn {
+    border: none;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem; 
+    height: auto;
+    padding: 10px 15px;
+    background-color: #45a049;
+    border-radius: 8px;
+}
+.data-container {
+    display: flex;
+    flex-wrap: wrap; 
+}
+.color-box {
+    border: none;
+    font-size: 30px; 
+    background-color: inherit; 
+    cursor: pointer;
+}
+.color-container {
+    display: flex;
+    gap: 10px; 
+    flex-wrap: wrap; 
+}
+.submit {
+    background-color: #4caf50; 
+    border: none;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem; 
+    border-radius: 8px;
+    height: auto; 
+    width: 80px; 
+    padding: 10px; 
+}
+.clear {
+    background-color: red; 
+    border: none;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem; 
+    border-radius: 8px;
+    height: 40px; 
+    width: 120px; 
+}
+.clear:hover {
+    background-color: rgb(207, 38, 38);
+    cursor: pointer;
+}
+.response-container {
+    padding: 8px; 
+    max-width: 350px; 
+    overflow-y: auto; 
+    height: auto; 
+    display: flex; 
+    flex-direction: column; 
+}
+.response-text {
+    font-size: 1.2rem; 
+    color: white;
+}
+.response-heading {
+    color: white;
+    font-size: 22px;
+}
+::-webkit-scrollbar {
+    background-color: inherit;
+}
+.scroll{
+    overflow: scroll;
+    height: 520px;
+}
+.submit:hover {
+    background-color: #45a049;
+    cursor: pointer;
+}
+@media (min-width: 769px) {
+    .container {
+        flex-direction: row; 
+        justify-content: space-between; 
+        align-items: flex-start;
+    }
+    .response-container {
+        max-width: 350px; 
+    }
+}
+@media (max-width: 768px) {
+    .heading {
+        font-size: 1.5rem; 
+    }
+    .erase-btn,
+    .submit,
+    .clear {
+        font-size: 0.9rem; 
+        padding: 8px 12px; 
+        width: auto; 
+    }
+    .color-box {
+        font-size: 25px;
+    }
+    .response-container {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .heading {
+        font-size: 1.2rem;
+    }
+    .erase-btn,
+    .submit,
+    .clear {
+        font-size: 0.8rem;
+        padding: 6px 10px; 
+        width: auto; 
+    }
+    .color-box {
+        font-size: 20px; 
+    }
+}
