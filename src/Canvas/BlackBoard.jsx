@@ -60,9 +60,10 @@ const BlackboardCanvas = () => {
   async function submit() {
     const canvas = canvasRef.current;
     const image = canvas.toDataURL();
+    console.log(image)
     try {
-      const response = await axios.post("http://localhost:5000/solve", {
-        image,
+      const response = await axios.post("https://magic-board-backend.vercel.app/solve", {
+        image
       });
       const text = response.data;
       setData((prevData) => [
