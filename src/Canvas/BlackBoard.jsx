@@ -60,7 +60,6 @@ const BlackboardCanvas = () => {
   async function submit() {
     const canvas = canvasRef.current;
     const image = canvas.toDataURL();
-    console.log(image)
     try {
       const response = await axios.post("https://magic-board-backend.vercel.app/solve", {
         image
@@ -71,7 +70,6 @@ const BlackboardCanvas = () => {
         { success: text.success, answer: text.answer },
       ]);
       eraseCanvas();
-      console.log(response.data);
     } catch (error) {
       console.error("Error submitting the canvas image:", error);
     }
