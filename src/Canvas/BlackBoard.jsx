@@ -63,7 +63,7 @@ const BlackboardCanvas = () => {
     const canvas = canvasRef.current;
     const image = canvas.toDataURL();
     try {
-      const response = await axios.post("http://localhost:5000/solve",{image,});
+      const response = await axios.post("https://magic-board-backend.vercel.app/solve",{image,});
       const text = response.data;
       setVoiceData(text.answer)
       setData((prevData) => [
