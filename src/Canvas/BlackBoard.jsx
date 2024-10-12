@@ -15,6 +15,7 @@ const BlackboardCanvas = () => {
   const [isBouncingRed, setIsBouncingRed] = useState(false);
   const [isBouncingSkyBlue, setIsBouncingSkyBlue] = useState(false);
   const [isBouncingYellow, setIsBouncingYellow] = useState(false);
+  const [isvoicData, setVoiceData] = useState("");
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
@@ -57,14 +58,14 @@ const BlackboardCanvas = () => {
     context.fillRect(0, 0, canvas.width, canvas.height);
     context.strokeStyle = "red";
   };
+
   async function submit() {
     const canvas = canvasRef.current;
     const image = canvas.toDataURL();
     try {
-      const response = await axios.post("https://magic-board-backend.vercel.app/solve", {
-        image
-      });
+      const response = await axios.post("http://localhost:5000/solve",{image,});
       const text = response.data;
+      setVoiceData(text.answer)
       setData((prevData) => [
         ...prevData,
         { success: text.success, answer: text.answer },
@@ -74,6 +75,13 @@ const BlackboardCanvas = () => {
       console.error("Error submitting the canvas image:", error);
     }
   }
+  useEffect(()=>{
+    if(isvoicData){
+      const synth = window.speechSynthesis;
+      const u = new SpeechSynthesisUtterance(isvoicData);
+      synth.speak(u)
+    }
+  },[isvoicData])
   const changeColor = (e, color) => {
     setColor(color);
     if (color === "white") {
@@ -111,7 +119,7 @@ const BlackboardCanvas = () => {
           {isEraser ? "Switch to Draw" : "Switch to Eraser"}
         </button>
         <div className="color-container">
-        <button
+          <button
             onClick={(e) => changeColor(e, "yellow")}
             className="color-box"
           >
