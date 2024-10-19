@@ -16,7 +16,7 @@ const BlackboardCanvas = () => {
   const [isBouncingSkyBlue, setIsBouncingSkyBlue] = useState(false);
   const [isBouncingYellow, setIsBouncingYellow] = useState(false);
   const [isvoicData, setVoiceData] = useState("");
-  var count = 0;
+
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
@@ -60,13 +60,11 @@ const BlackboardCanvas = () => {
     context.fillRect(0, 0, canvas.width, canvas.height);
     context.strokeStyle = "red";
   };
-
   async function submit() {
     const canvas = canvasRef.current;
     const image = canvas.toDataURL();
     try {
-        const response = await axios.post("http://localhost:3000/solve",{image,});
-        count++;
+        const response = await axios.post("https://magic-board-backend.vercel.app/solve",{image});
         const text = response.data;
         setVoiceData(text.answer)
         setData((prevData) => [
