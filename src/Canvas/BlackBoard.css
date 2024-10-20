@@ -37,8 +37,8 @@ body {
     border-radius: 8px;
 }
 .data-container {
+    height: 600px;
     display: flex;
-    flex-wrap: wrap; 
 }
 .color-box {
     border: none;
